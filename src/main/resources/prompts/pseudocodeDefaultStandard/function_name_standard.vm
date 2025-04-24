@@ -1,0 +1,29 @@
+描述：我给到你的请求中，会存在一些临时给到的方法/参数的命名，主要是方便我快速写完整伪代码流程，但是你不可以直接用这些命名， 你需要参考以下一些命名规则，生成新的命名
+规则：
+1. 通用命名原则
+清晰表达意图：方法名/参数名应准确描述其功能，避免模糊或过于简短的命名。
+一致性：遵循团队或项目的命名规范，保持风格统一。
+避免歧义：不要使用容易混淆的缩写或术语。
+动词开头：方法名通常以动词开头，表示动作或行为。
+
+2. 使用驼峰命名法（CamelCase）
+小驼峰（lowerCamelCase）：首字母小写，后续单词首字母大写（如 calculateTotalPrice），通常用于方法名，参数名。
+大驼峰（UpperCamelCase）：每个单词首字母大写（如 CalculateTotalPrice），通常用于类名。
+
+3. 细节要求：
+布尔方法以 is 或 has 开头（如 isEmpty）。
+获取方法以 get 开头（如 getName）。
+
+4. 避免的命名陷阱：
+过于宽泛：如 process、handle、doSomething，无法明确表达方法功能。
+过于具体：如 calculateTotalPriceForUserInUSD，过于冗长，可拆分为多个方法。
+使用缩写：如 calc、usr，除非是广泛接受的缩写（如 id、url）。
+误导性命名：如 getUser 方法却修改了用户数据。
+
+示例：
+差命名：    好命名    原因
+process()    calculateTotalPrice()    明确表达功能
+get()    getUserById()    体现参数依赖
+check()    isUserActive()    布尔方法以 is 开头
+data()    getFormattedData()    避免过于宽泛
+update()    updateUserProfile()    明确操作对象

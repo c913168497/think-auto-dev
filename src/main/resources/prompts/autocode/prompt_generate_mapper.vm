@@ -1,0 +1,107 @@
+你是一名高级java软件开发工程师，在编写java的crud代码时，你需要根据我给到的mybatisxml代码和关联类代码，生成对应的mapper的接口方法，我会给到你一些示例，你可以理解示例，并生成我所需要的代码
+
+以下是我给到的示例
+```
+<select id="getByBizId" resultType="com.ansun.ssm.entity.order.OrderItemDiscountEntity">
+    select
+    id,
+    amount,
+    biz_id,
+    member_card_id
+    from ord_order_item_discount
+    where biz_id = #{bizId} and type = #{type} and status = #{status} and del_flag = '0' and member_card_id in
+    <foreach item="memberCardId" collection="memberCardIds" open="(" separator="," close=")">
+        #{type}
+    </foreach>
+</select>
+```
+关联的类代码：
+OrderItemDiscountEntity
+```
+/**
+* 类描述：订单明细优惠对象
+*/
+public class OrderItemDiscountEntity extends BaseEntity implements Serializable {
+/**
+* 主键id
+*/
+private Long id;
+/**
+* 订单明细id
+*/
+private Long orderItemId;
+/**
+* 类型（10=卡项抵扣、20=优惠券减免、30=积分抵扣，40=护理消耗，50=产品消耗）
+*/
+private String type;
+/**
+* 状态,10=使用,20=退回
+*/
+private Integer status;
+/**
+* 名称，如：次卡抵扣1次
+*/
+private String name;
+/**
+* 金额
+*/
+private BigDecimal amount;
+/**
+* 业务id
+*/
+private String bizId;
+/**
+* 会员卡项id
+*/
+private Long memberCardId;
+/**
+* 消耗次数（针对护理消耗）
+*/
+private BigDecimal quantity;
+
+/**
+* 项目总次数（type=10：卡项维度，type=40：项目维度）
+*/
+private BigDecimal currentTotalQuantity;
+}
+```
+
+生成的代码示例：
+```
+/**
+* 根据 bizId，type，status，memberCardIds 查询 订单明细优惠对象
+* @param bizId 业务id
+* @param type 类型（10=卡项抵扣、20=优惠券减免、30=积分抵扣，40=护理消耗，50=产品消耗）
+* @param status 状态,10=使用,20=退回
+* @param memberCardIds 会员卡项id
+* @return 订单明细优惠对象
+*/
+OrderItemDiscountEntity getByBizId(@Param("bizId") Long bizId, @Param("type") String type, @Param("status") Integer status, @Param("memberCardIds") List<Long> memberCardIds);
+```
+
+以下是我的实际mybaitsxml代码和关联的类信息：
+mybatisxml代码
+```
+${context.selectCode}
+```
+关联的类代码:
+${context.classInfo}
+
+生成代码的一些规则说明：
+1.入参参数数据类型辨别：
+- 参数基本可以从关联的类代码中拿到参数的数据类型，比如 bizId 为 String, status 为 Integer, type 为 String
+- 如果mybatisxml代码中，存在foreach标签的数据，如：collection="memberCardIds"， 那么入参可以认为存在 list 参数包装类型，如memberCardId的list入参
+2. 返回参数数据类型辨别：
+- 如果mybatisxml代码中，id标签内的值以get开头，可以认为返回结果是单结果集
+- 如果mybatisxml代码中，id标签内的值以list开头，可以认为返回结果是list结果集
+- 如果mybatisxml代码中，id标签内的值以page开头，可以认为返回结果是list结果集
+- 如果mybatisxml代码中，id标签内的值以update开头，可以认为返回结果是int, 表明更新条数
+
+3. 如果您无法从关联的类代码中，无法拿到参数的数据类型，那么可以考虑参考以下的一些生成规则，来尝试生成
+- 如果参数中存在amount, price 等金额相关的字符，那么参数类型可以考虑以 BigDecimal 来处理
+- 如果参数中存在 date, time 等时间相关字符，那么参数类型可以考虑以 Date 来处理
+- 如果实在猜不到是什么类型，则默认参数类型为 String
+
+生成要求：
+- 理解我给到的示例，并根据给到的mybatisxml代码和关联的类代码，以及给到的生成代码的一些规则说明，生成代码
+- 只需要返回代码即可，不需要解释

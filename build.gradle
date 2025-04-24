@@ -1,0 +1,71 @@
+plugins {
+    id("java")
+    id("org.jetbrains.kotlin.plugin.serialization") version "2.0.20"
+    id("org.jetbrains.intellij") version "1.17.4"
+    id 'org.jetbrains.kotlin.jvm' version "2.0.20"
+}
+
+group = "think.auto.dev"
+version = "1.0-SNAPSHOT"
+
+dependencies {
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8' // 请使用最新的版本号
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1'
+    implementation 'com.theokanning.openai-gpt3-java:api:0.18.2'
+    implementation 'com.theokanning.openai-gpt3-java:client:0.18.2'
+    implementation 'com.theokanning.openai-gpt3-java:service:0.18.2'
+    implementation 'com.squareup.okhttp3:okhttp:4.4.1'
+    implementation 'com.squareup.okhttp3:okhttp-sse:4.4.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-jackson:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-jaxb:2.9.0'
+    // open ai deps
+    implementation('io.reactivex.rxjava3:rxjava:3.1.9')
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.17.2")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.17.2")
+    implementation 'com.fasterxml.jackson.module:jackson-module-kotlin:2.14.2'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
+    implementation 'com.knuddels:jtokkit:1.0.0'
+    implementation 'com.nfeld.jsonpathkt:jsonpathkt:2.0.1'
+    implementation 'org.commonmark:commonmark-parent:0.21.0'
+    implementation 'org.commonmark:commonmark:0.21.0'
+    implementation 'org.commonmark:commonmark-ext-gfm-tables:0.21.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0'
+    implementation 'cn.hutool:hutool-all:5.7.16'
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.1")
+}
+
+// com.knuddels:jtokkit
+// JTokkit 旨在成为一个快速高效的分词器，设计用于使用 OpenAI 模型的自然语言处理任务。它提供了一个易于使用的界面，用于对输入文本进行标记，例如，在准备对 GPT-3.5 模型的请求时计算所需的标记。这个库的产生是因为需要在 JVM 生态系统中拥有与 tiktoken 为 Python 提供的库类似的功能。
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://mvnrepository.com/' }
+    maven { url 'https://repo1.maven.org/maven2/' }
+    maven { url 'https://maven.aliyun.com/repository/public/' }
+    maven { url 'https://maven.aliyun.com/repository/jcenter/' }
+    maven { url 'https://maven.aliyun.com/repository/google/' }
+    maven { url 'https://maven.aliyun.com/repository/gradle-plugin/' }
+}
+
+intellij {
+    version = '241.15989.150'
+    type = 'IU'
+    plugins = ["com.intellij.java",
+               "org.jetbrains.idea.maven",
+               "Git4Idea",
+               "org.jetbrains.plugins.gradle",
+               "org.jetbrains.kotlin",
+               "com.intellij.database",
+               "com.jetbrains.sh",
+               "org.intellij.plugins.markdown"] // 正确地添加额外的插件依赖
+}
+kotlin {
+    jvmToolchain(17)
+}

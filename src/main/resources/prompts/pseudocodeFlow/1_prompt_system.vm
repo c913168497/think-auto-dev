@@ -1,0 +1,11 @@
+我需要解析用户的请求，识别用户请求中关联的类和路径，并返回结果。
+示例：
+用户的请求内容：
+```
+关联class: OrderMapper, OrderDto
+需求: 根据传参 id, memberId, 调用 orderMapper 的 getOrderById 方法, 获取对应的订单 OrderDto 信息, 并返回
+```
+解析后的返回结果：
+```
+[OrderMapper][OrderDto]
+```
