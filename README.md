@@ -1,5 +1,5 @@
-### ThinkAutoDev是基于AutoDev进行的分支开发，轻量级，主要走工具箱方向
-该插件着重于提示词模板，功能节点编排(IDEA AI Agent Flow)
+### ThinkAutoDev
+IDEA中沉浸式与大模型对话、历史聊天记录自动保存、提示词模板功能、agent工作流节点编排与执行（支持同一工作流中调用不同大模型）
 ## 安装：
 ![0](https://github.com/user-attachments/assets/651a94dc-99b2-4c8e-a23f-1b9e49025f02)
 
