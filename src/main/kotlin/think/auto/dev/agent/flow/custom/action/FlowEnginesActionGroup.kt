@@ -33,11 +33,16 @@ class FlowEnginesActionGroup :
 
     private fun getAiAssistantIntentions(project: Project, editor: Editor?, file: PsiFile): List<IntentionAction> {
         val allFlowEngineConfig = FlowEngineConfigDataBaseComponent.getAllFlowEngineConfig()
-        val customActionIntentions: List<IntentionAction> = allFlowEngineConfig.map {
-            FlowEngineAction.create(it)
-        }
+
+        val customActionIntentions: List<IntentionAction> =
+            allFlowEngineConfig.filter { // 如果包含文件夹获取功能，则需要展示
+                !it.content.contains("FOLDER_CONTENT_GET")
+            }.map {
+                FlowEngineAction.create(it)
+            }
 
         val actionList = customActionIntentions
         return actionList.map { it }
     }
+
 }

@@ -2,8 +2,9 @@ package think.auto.dev.agent.chatpanel
 
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.project.Project
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.launch
 import think.auto.dev.agent.chatcontext.ChatMessage
 import think.auto.dev.agent.chatcontext.ChatPrompt
 import think.auto.dev.llm.LLMCoroutineScope

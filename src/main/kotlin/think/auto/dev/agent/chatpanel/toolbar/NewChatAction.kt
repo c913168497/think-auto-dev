@@ -5,11 +5,8 @@ import com.intellij.openapi.actionSystem.ex.CustomComponentAction
 import com.intellij.openapi.diagnostic.logger
 import com.intellij.openapi.project.DumbAwareAction
 import com.intellij.ui.components.panels.Wrapper
-import com.intellij.ui.content.ContentManagerEvent
-import com.intellij.ui.content.ContentManagerListener
 import com.intellij.util.ui.JBInsets
 import com.intellij.util.ui.JBUI
-import think.auto.dev.agent.chatpanel.ChatCodingPanel
 import think.auto.dev.agent.chatpanel.ThinkAutoDevToolWindowFactory
 import think.auto.dev.settings.language.LanguageChangedCallback.componentStateChanged
 import javax.swing.JButton

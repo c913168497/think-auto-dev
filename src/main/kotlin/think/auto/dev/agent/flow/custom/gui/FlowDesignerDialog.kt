@@ -2,17 +2,14 @@ package think.auto.dev.agent.flow.custom.gui
 
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.DialogWrapper
+import com.intellij.ui.OnePixelSplitter
 import com.intellij.ui.components.JBTextField
 import think.auto.dev.settings.flowEngine.database.FlowEngineConfig
 import java.awt.BorderLayout
 import java.awt.Dimension
 import java.awt.Font
 import java.awt.event.ActionEvent
-import java.awt.event.ComponentAdapter
-import java.awt.event.ComponentEvent
 import javax.swing.*
-import com.intellij.ui.JBSplitter
-import com.intellij.ui.OnePixelSplitter
 
 class FlowDesignerDialog(
     private val project: Project,

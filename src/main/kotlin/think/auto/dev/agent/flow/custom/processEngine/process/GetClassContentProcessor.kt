@@ -1,16 +1,13 @@
 package think.auto.dev.agent.flow.custom.processEngine.process
 
-import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.project.Project
-import com.intellij.psi.PsiFile
-import think.auto.dev.agent.flow.autocode.PseudocodeToTrueCodeContext
 import think.auto.dev.agent.flow.custom.processEngine.*
 import think.auto.dev.utils.findPsiClassesByClassNameSafely
 import think.auto.dev.utils.getClassInfoAndFunInfo
 import java.util.regex.Pattern
 
 // 获取类内容处理器
-class GetClassContentProcessor(var project: Project, editor: Editor?, file: PsiFile?) : NodeProcessor {
+class GetClassContentProcessor(var project: Project) : NodeProcessor {
     override fun canProcess(nodeType: String): Boolean {
         return nodeType == "GET_CLASS_CONTENT"
     }

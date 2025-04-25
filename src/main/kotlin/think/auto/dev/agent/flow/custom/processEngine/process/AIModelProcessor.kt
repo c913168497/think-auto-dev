@@ -1,18 +1,14 @@
 package think.auto.dev.agent.flow.custom.processEngine.process
 
 
-import com.intellij.openapi.application.ApplicationManager
-import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.project.Project
-import com.intellij.psi.PsiFile
-import kotlinx.coroutines.runBlocking
 import think.auto.dev.agent.chatcontext.ChatPrompt
 import think.auto.dev.agent.chatpanel.sendToChatPanelSync
 import think.auto.dev.agent.flow.custom.processEngine.*
 import think.auto.dev.settings.aiProvider.AiProviderDBComponent
 
 // AI模型处理器
-class AIModelProcessor(var project: Project, editor: Editor?, file: PsiFile?) : NodeProcessor {
+class AIModelProcessor(var project: Project) : NodeProcessor {
     override fun canProcess(nodeType: String): Boolean {
         return nodeType == "AI_MODEL_PROCESS"
     }

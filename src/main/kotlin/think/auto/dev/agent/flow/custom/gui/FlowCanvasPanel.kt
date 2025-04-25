@@ -604,6 +604,7 @@ class FlowCanvasPanel : JPanel() {
             NodeType.REGEX_PROCESS -> Color(250, 250, 210)         // Light Goldenrod
             NodeType.AI_MODEL_PROCESS -> Color(255, 160, 122)      // Light Salmon
             NodeType.PROMPT_EDIT -> Color(255, 110, 122)      // Light Salmon
+            NodeType.FOLDER_CONTENT_GET -> Color(173, 116, 130)      // Light Salmon
         }
     }
 

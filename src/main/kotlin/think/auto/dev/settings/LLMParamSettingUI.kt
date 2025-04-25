@@ -6,7 +6,6 @@ import com.intellij.openapi.project.ProjectManager
 import com.intellij.openapi.ui.ComboBox
 import com.intellij.openapi.ui.Messages
 import com.intellij.ui.components.JBLabel
-import com.intellij.ui.components.JBScrollPane
 import com.intellij.ui.dsl.builder.panel
 import com.intellij.util.ui.FormBuilder
 import kotlinx.serialization.json.Json

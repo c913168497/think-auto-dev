@@ -1,7 +1,6 @@
 package think.auto.dev.utils
 
 import com.intellij.openapi.util.IconLoader
-import com.intellij.ui.AnimatedIcon
 import javax.swing.Icon
 
 object ThinkAutoDevIcons {

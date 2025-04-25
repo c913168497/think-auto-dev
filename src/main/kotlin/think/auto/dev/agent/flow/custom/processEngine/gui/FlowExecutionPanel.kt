@@ -3,10 +3,7 @@ package think.auto.dev.agent.flow.custom.processEngine.gui
 import com.intellij.icons.AllIcons
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.application.ModalityState
-import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.SimpleToolWindowPanel
-import com.intellij.openapi.wm.ToolWindow
-import com.intellij.openapi.wm.ToolWindowManager
 import com.intellij.ui.JBColor
 import com.intellij.ui.components.JBScrollPane
 import com.intellij.ui.components.panels.VerticalLayout
@@ -16,11 +13,12 @@ import think.auto.dev.agent.flow.custom.processEngine.NodeExecutionResult
 import java.awt.BorderLayout
 import java.awt.Dimension
 import java.awt.FlowLayout
-import javax.swing.*
+import javax.swing.JButton
+import javax.swing.JLabel
+import javax.swing.JPanel
+import javax.swing.JTextArea
 import javax.swing.border.EmptyBorder
 import javax.swing.border.LineBorder
-import java.util.concurrent.CountDownLatch
-import java.util.concurrent.TimeUnit
 
 class FlowExecutionPanel : SimpleToolWindowPanel(true, true) {
     private val contentPanel = JPanel(VerticalLayout(10))

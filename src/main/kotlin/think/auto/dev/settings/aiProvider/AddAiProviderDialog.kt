@@ -3,12 +3,10 @@ package think.auto.dev.settings.aiProvider
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.ComboBox
 import com.intellij.openapi.ui.DialogWrapper
-import com.intellij.openapi.ui.Messages
 import com.intellij.util.ui.FormBuilder
 import think.auto.dev.settings.FormBuildParamComponents
 import think.auto.dev.settings.language.ThinkAutoDevMessagesBundle
 import java.awt.Dimension
-import java.util.*
 import javax.swing.JComboBox
 import javax.swing.JComponent
 import javax.swing.JPanel

@@ -4,14 +4,9 @@ package think.auto.dev.agent.chatpanel
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.diagnostic.logger
 import com.intellij.openapi.project.Project
-import kotlinx.coroutines.CompletableDeferred
-import kotlinx.coroutines.Deferred
-import think.auto.dev.agent.chatcontext.ChatMessage
 import think.auto.dev.agent.chatcontext.ChatPrompt
-import think.auto.dev.llm.LLMCoroutineScope
 import think.auto.dev.settings.aiProvider.AiProvider
 import think.auto.dev.settings.chatcontext.ChatContextItem
-import think.auto.dev.settings.language.ThinkAutoDevMessagesBundle
 import java.util.concurrent.CompletableFuture
 
 fun sendToChatWindow(

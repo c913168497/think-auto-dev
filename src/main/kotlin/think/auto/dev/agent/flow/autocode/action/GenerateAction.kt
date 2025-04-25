@@ -9,9 +9,9 @@ import com.intellij.psi.PsiClass
 import com.intellij.psi.PsiFile
 import com.intellij.psi.util.PsiTreeUtil
 import com.intellij.psi.util.PsiUtil
-import think.auto.dev.agent.flow.autocode.TrueCodeFieldClassCodeContext
 import think.auto.dev.agent.flow.autocode.PseudocodeToTrueCodeContext
 import think.auto.dev.agent.flow.autocode.PseudocodeToTrueCodeTask
+import think.auto.dev.agent.flow.autocode.TrueCodeFieldClassCodeContext
 import think.auto.dev.utils.getElementToAction
 
 class GenerateAction : AnAction() {

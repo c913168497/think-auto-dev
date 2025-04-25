@@ -52,6 +52,10 @@ class NodeConfigPanel(private val onNodeUpdated: (FlowNode) -> Unit) : JPanel() 
         wrapStyleWord = true
         font = Font("Microsoft YaHei", Font.PLAIN, 12)
     }
+
+    // 忽略文件夹
+    private val ignoredFoldersField = JBTextField()
+
     private val modelOptions = AiProviderDBComponent.getAllAiProviders().map { it.customModelName }.toTypedArray()
     private val modelCombo = ComboBox(modelOptions)
 
@@ -122,13 +126,11 @@ class NodeConfigPanel(private val onNodeUpdated: (FlowNode) -> Unit) : JPanel() 
         }
 
         add(splitter, BorderLayout.CENTER)
-
         // 添加事件监听
         nodeTypeCombo.addActionListener {
             val selectedType = nodeTypeCombo.selectedItem as NodeType
             cardLayout.show(configCards, selectedType.name)
             updateCurrentNode()
-
             // 当切换到PROMPT_EDIT类型时，更新父节点按钮
             if (selectedType == NodeType.PROMPT_EDIT) {
                 updateParentNodesButtons()
@@ -148,11 +150,11 @@ class NodeConfigPanel(private val onNodeUpdated: (FlowNode) -> Unit) : JPanel() 
             if (currentNode != null) {
                 updateCurrentNode()
             }
-
+            var nodeType = nodeTypeCombo.selectedItem as NodeType
             // 然后添加新节点
             canvasPanel?.addNewNode(
-                nodeTypeCombo.selectedItem as NodeType,
-                if (nodeNameField.text.isNotEmpty()) nodeNameField.text else "新节点"
+                nodeType,
+                nodeNameField.text.ifEmpty { nodeType.displayName }
             )
         }
 
@@ -242,6 +244,23 @@ class NodeConfigPanel(private val onNodeUpdated: (FlowNode) -> Unit) : JPanel() 
                     card.add(promptPanel, BorderLayout.NORTH)
                 }
 
+
+                NodeType.FOLDER_CONTENT_GET -> {
+                    val ignoredFoldersPanel = JPanel().apply {
+                        layout = BoxLayout(this, BoxLayout.X_AXIS)
+                        alignmentX = Component.LEFT_ALIGNMENT
+                        add(JLabel("忽略文件夹:"))
+                        add(ignoredFoldersField)
+                        ignoredFoldersField.document.addDocumentListener(object : DocumentListener {
+                            override fun insertUpdate(e: DocumentEvent) = updateCurrentNode()
+                            override fun removeUpdate(e: DocumentEvent) = updateCurrentNode()
+                            override fun changedUpdate(e: DocumentEvent) = updateCurrentNode()
+                        })
+                    }
+
+                    card.add(ignoredFoldersPanel, BorderLayout.NORTH)
+                }
+
                 else -> {
                     // 其他类型节点没有特殊配置
                     card.add(JLabel("该节点类型无需额外配置。"), BorderLayout.CENTER)
@@ -261,6 +280,7 @@ class NodeConfigPanel(private val onNodeUpdated: (FlowNode) -> Unit) : JPanel() 
             regexPatternField.text = ""
             aiPromptField.text = ""
             modelCombo.selectedIndex = 0
+            ignoredFoldersField.text = ""
             return
         }
 
@@ -272,6 +292,10 @@ class NodeConfigPanel(private val onNodeUpdated: (FlowNode) -> Unit) : JPanel() 
         when (node.type) {
             NodeType.REGEX_PROCESS -> {
                 regexPatternField.text = node.config ?: ""
+            }
+
+            NodeType.FOLDER_CONTENT_GET -> {
+                ignoredFoldersField.text = node.config ?: ""
             }
 
             NodeType.AI_MODEL_PROCESS -> {
@@ -308,6 +332,10 @@ class NodeConfigPanel(private val onNodeUpdated: (FlowNode) -> Unit) : JPanel() 
 
             NodeType.PROMPT_EDIT -> {
                 aiPromptField.text
+            }
+
+            NodeType.FOLDER_CONTENT_GET -> {
+                ignoredFoldersField.text
             }
 
             else -> ""

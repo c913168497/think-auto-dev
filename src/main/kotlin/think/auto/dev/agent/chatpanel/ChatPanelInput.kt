@@ -21,7 +21,6 @@ import com.intellij.util.ui.JBUI
 import think.auto.dev.settings.language.LanguageChangedCallback.placeholder
 import java.awt.Color
 import java.awt.event.KeyEvent
-import java.util.*
 import javax.swing.KeyStroke
 
 

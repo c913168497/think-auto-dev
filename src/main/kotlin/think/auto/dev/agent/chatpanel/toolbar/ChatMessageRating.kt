@@ -1,14 +1,14 @@
 package think.auto.dev.agent.chatpanel.toolbar
 
+import com.intellij.icons.AllIcons
 import com.intellij.openapi.actionSystem.ActionUpdateThread
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.project.DumbAwareToggleAction
 import com.intellij.openapi.project.ProjectManager
-import javax.swing.Icon
-import com.intellij.icons.AllIcons
+import think.auto.dev.agent.chatpanel.message.CompletableMessage
 import java.awt.Toolkit
 import java.awt.datatransfer.StringSelection
-import think.auto.dev.agent.chatpanel.message.CompletableMessage
+import javax.swing.Icon
 
 abstract class AutoDevRateMessageAction : DumbAwareToggleAction() {
     override fun getActionUpdateThread(): ActionUpdateThread = ActionUpdateThread.EDT

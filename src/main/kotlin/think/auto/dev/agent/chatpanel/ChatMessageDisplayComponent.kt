@@ -1,8 +1,5 @@
 package think.auto.dev.agent.chatpanel
 
-import javax.swing.*
-import javax.swing.event.DocumentEvent
-import javax.swing.event.DocumentListener
 import com.intellij.util.ui.JBEmptyBorder
 import com.intellij.util.ui.UIUtil
 import org.apache.commons.text.StringEscapeUtils

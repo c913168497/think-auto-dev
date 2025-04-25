@@ -19,7 +19,8 @@
     <depends>com.intellij.database</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <notificationGroup id="thinkAutoDev.notification.group" displayType="STICKY_BALLOON" bundle="messages.ThinkAutoDevMessagesBundle" key="name"/>
+        <notificationGroup id="thinkAutoDev.notification.group" displayType="STICKY_BALLOON"
+                           bundle="messages.ThinkAutoDevMessagesBundle" key="name"/>
 
         <applicationConfigurable parentId="tools" instance="think.auto.dev.settings.ThinkAutoDevSettingsConfigurable"
                                  id="think.auto.dev.settings.ThinkAutoDevSettingsConfigurable"
@@ -35,8 +36,10 @@
                     factoryClass="think.auto.dev.agent.chatpanel.ThinkAutoDevToolWindowFactory"/>
 
         <!-- 代码高亮去除 -->
-        <highlightErrorFilter implementation="think.auto.dev.agent.chatpanel.message.gui.snippet.error.CodeBlockHighlightErrorFilter"/>
-        <daemon.highlightInfoFilter implementation="think.auto.dev.agent.chatpanel.message.gui.snippet.error.CodeBlockHighlightingFilter"/>
+        <highlightErrorFilter
+                implementation="think.auto.dev.agent.chatpanel.message.gui.snippet.error.CodeBlockHighlightErrorFilter"/>
+        <daemon.highlightInfoFilter
+                implementation="think.auto.dev.agent.chatpanel.message.gui.snippet.error.CodeBlockHighlightingFilter"/>
         <defaultHighlightingSettingProvider
                 implementation="think.auto.dev.agent.chatpanel.message.gui.snippet.error.CodeBlockHighlightingSettingsProvider"/>
         <daemon.intentionActionFilter
@@ -63,16 +66,25 @@
 
     <actions>
         <!-- 提示词自定义功能，右键按钮组 -->
-        <group id="AutoDevIntentionsActionGroup" class="think.auto.dev.agent.CustomRightClickActionGroup" searchable="false">
-            <add-to-group group-id="ShowIntentionsGroup" relative-to-action="ShowIntentionActions" anchor="after"/>
-            <add-to-group group-id="Floating.CodeToolbar" anchor="first"/>
-        </group>
-        <!-- 提示词自定义功能，右键按钮组 -->
-        <group id="FlowAgentActionGroup" class="think.auto.dev.agent.flow.custom.action.FlowEnginesActionGroup" searchable="false">
+        <group id="AutoDevIntentionsActionGroup" class="think.auto.dev.agent.CustomRightClickActionGroup"
+               searchable="false">
             <add-to-group group-id="ShowIntentionsGroup" relative-to-action="ShowIntentionActions" anchor="after"/>
             <add-to-group group-id="Floating.CodeToolbar" anchor="first"/>
         </group>
 
+        <!-- 提示词自定义功能，右键按钮组 -->
+        <group id="FlowAgentActionGroup" class="think.auto.dev.agent.flow.custom.action.FlowEnginesActionGroup"
+               searchable="false">
+            <add-to-group group-id="ShowIntentionsGroup" relative-to-action="ShowIntentionActions" anchor="after"/>
+            <add-to-group group-id="Floating.CodeToolbar" anchor="first"/>
+        </group>
+
+        <!-- 注册Action并将其添加到右键菜单 -->
+        <group id="FlowAgentPopupMenuActionGroup"
+                class="think.auto.dev.agent.flow.custom.action.FlowEnginesFoldActionGroup"
+            popup="true">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="first"/>
+        </group>
 
         <!-- 对话panel的代码功能操作 bar, 如显示语言， 选择复制， 选择加入到当前位置 -->
         <group id="ThinkAutoDev.ToolWindow.Snippet.Toolbar">
@@ -89,7 +101,8 @@
         </group>
 
         <group id="ThinkAutoDev.ToolWindow.Chat.TitleActions">
-            <action id="ThinkAutoDev.ToolWindow.NewChatAction" class="think.auto.dev.agent.chatpanel.toolbar.NewChatAction"/>
+            <action id="ThinkAutoDev.ToolWindow.NewChatAction"
+                    class="think.auto.dev.agent.chatpanel.toolbar.NewChatAction"/>
         </group>
 
         <group id="ThinkAutoDev.ToolWindow.Message.Toolbar.Assistant">
