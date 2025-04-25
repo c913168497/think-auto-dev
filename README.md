@@ -1,5 +1,5 @@
 ### ThinkAutoDev是基于AutoDev进行的分支开发，轻量级，主要走工具箱方向
-该插件着重于提示词模板，功能节点编排
+该插件着重于提示词模板，功能节点编排(IDEA AI Agent Flow)
 ## 安装：
 ![0](https://github.com/user-attachments/assets/651a94dc-99b2-4c8e-a23f-1b9e49025f02)
 
